@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int main()
+{
+    char nama[50], pendidikan;
+    int jabatan, lamakerja;
+    double tjabatan, tpendidikan, hlembur, tgaji;
+    const double ULEMBUR=3000;
+    const double GAJI=2000000;
+    const int jamkerja=8;
+    
+    printf("Algorithm & Programming - Tugas Pribadi 1");
+    printf("\nNama : Welly Yanto");
+    printf("\nNIM  : 2402005584");
+    printf("\n\n=======  PROGRAM HITUNG GAJI KARYAWAN  ========");
+    printf("\n");
+    printf("Nama Karyawan\t\t:  "); fgets(nama,sizeof(nama),stdin);
+    printf("Golongan Jabatan\t:  "); scanf("%d", &jabatan);
+    printf("Golongan Pendidikan\t:  "); scanf(" %s", &pendidikan);
+    printf("Jumlah Jam Kerja\t:  "); scanf("%d", &lamakerja);
+
+    // Hitung tunjangan jabatan
+
+    if(jabatan == 1){ tjabatan = (0.05 * GAJI);}           //100.000
+        else if (jabatan == 2){ tjabatan = (0.10 * GAJI);} //200.000
+        else if (jabatan == 3){ tjabatan = (0.15 * GAJI);} //300.000
+        else {tjabatan = 0;
+        }
+
+    // Hitung Tunjangan Pendidikan
+    if (strcmp(&pendidikan, "SMA")== 0) {tpendidikan = (0.025 * GAJI);}           // 50.000
+        else if (strcmp(&pendidikan, "D3") == 0) {tpendidikan = (0.05 * GAJI);}   //100.000
+        else if (strcmp(&pendidikan, "S1") == 0){tpendidikan = (0.10 * GAJI);}    //200.000
+        else {tpendidikan = 0;
+        }
+
+    // Hitung jama lama lembur
+    if (lamakerja > 8) {
+        hlembur = (lamakerja - jamkerja) * ULEMBUR;}
+        else {hlembur = 0;}
+
+    // Hitung total gaji
+    tgaji = GAJI + tjabatan + tpendidikan + hlembur;
+
+    printf("\n");
+    printf("\n<<< +++++++++++++++++++++++++++++++++++++ >>>");
+    printf("\nNama Karyawan\t:  %s", nama);
+    printf("\tGaji\t\t:  %.0f", GAJI);
+    printf("\n\tTunjangan Jabatan   :    %.3f", tjabatan);
+    printf("\n\tTunjangan Pendidikan:    %.3f", tpendidikan);
+    printf("\n\tHonor Lembur        :     %.3f", hlembur);
+    printf("\n++++++++++++++++++++++++++++++++++++++++++++");
+    printf("\nTOTAL GAJI\t            :  Rp %.3f", tgaji);
+    printf("\n++++++++++++++++++++++++++++++++++++++++++++\n\n");
+
+return(0);
+}
